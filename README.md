@@ -4,7 +4,7 @@ Purpose of this project is to showcase an example of Android application archite
 ## Why Clean architecture
 There are few well-known arhitectural patterns like MVC, MVP or MVVM that provide elegant solutions to separating application's UI code from the rest of the project. While in some cases it can be enough, we wanted to create a consistent architecture throughout whole application and not only in the presentation layer.
 
-##How is it implemented
+## How is it implemented
 ![Clean architecture onion diagram](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 Onion diagram above is Uncle Bob's well-known representation of Clean Architecture and it is the basis for this showcase project. 
 
