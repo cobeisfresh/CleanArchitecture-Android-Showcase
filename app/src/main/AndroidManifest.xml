@@ -3,6 +3,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.cobeisfresh.template">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
     android:name=".App"
     android:allowBackup="true"
@@ -11,7 +13,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
-    tools:ignore="GoogleAppIndexingWarning">
+    android:usesCleartextTraffic="true"
+    tools:ignore="AllowBackup,GoogleAppIndexingWarning">
     <activity android:name=".ui.weather.view.WeatherActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

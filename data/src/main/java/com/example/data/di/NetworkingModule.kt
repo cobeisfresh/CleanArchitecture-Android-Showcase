@@ -17,14 +17,16 @@ val networkingModule = module {
   single { GsonConverterFactory.create() as Converter.Factory }
   single { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) as Interceptor }
   single {
-    OkHttpClient.Builder().apply { if (BuildConfig.DEBUG) addInterceptor(get()).build() }
-    single {
-      Retrofit.Builder()
-          .baseUrl(BASE_URL)
-          .client(get())
-          .addConverterFactory(get())
-          .build()
-    }
-    single { get<Retrofit>().create(WeatherApi::class.java) }
+    OkHttpClient.Builder().apply {
+      if (BuildConfig.DEBUG) addInterceptor(get())
+    }.build()
   }
+  single {
+    Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(get())
+        .addConverterFactory(get())
+        .build()
+  }
+  single { get<Retrofit>().create(WeatherApi::class.java) }
 }

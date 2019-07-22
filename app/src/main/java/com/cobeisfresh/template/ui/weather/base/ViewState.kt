@@ -22,3 +22,4 @@ data class ViewState<T>(val status: Status, val data: T?, val error: Throwable?)
     }
   }
 }
+
