@@ -30,6 +30,7 @@ android {
 
 ext {
     coroutinesVersion = "1.2.1"
+    koinVersion = "2.0.1"
 }
 
 dependencies {
@@ -46,4 +47,8 @@ dependencies {
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    //di
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
 }
