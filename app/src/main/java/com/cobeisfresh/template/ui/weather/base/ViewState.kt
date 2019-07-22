@@ -9,8 +9,16 @@ data class ViewState<T>(val status: Status, val data: T?, val error: Throwable?)
   }
   
   companion object {
-    fun <T> success(data: T) = ViewState(SUCCESS, data, null)
-    fun error(error: Throwable) = ViewState(ERROR, null, error)
-    fun loading() = ViewState(LOADING, null, null)
+    fun <T> success(data: T): ViewState<T> {
+      return ViewState(SUCCESS, data, null)
+    }
+    
+    fun <T> error(error: Throwable): ViewState<T> {
+      return ViewState(ERROR, null, error)
+    }
+    
+    fun <T> loading(): ViewState<T> {
+      return ViewState(LOADING, null, null)
+    }
   }
 }

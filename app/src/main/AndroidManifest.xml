@@ -13,8 +13,6 @@
     android:theme="@style/AppTheme"
     tools:ignore="GoogleAppIndexingWarning">
     <activity android:name=".ui.weather.view.WeatherActivity">
-    </activity>
-    <activity android:name=".ui.weather.view.NewsActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

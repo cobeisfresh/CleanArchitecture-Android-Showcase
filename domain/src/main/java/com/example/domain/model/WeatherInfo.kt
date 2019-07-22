@@ -1,3 +1,3 @@
 package com.example.domain.model
 
-data class WeatherInfo(val temperature: Float, val humidity: Float, val pressure: Float)
+data class WeatherInfo(val temperature: Double, val humidity: Int, val pressure: Double)
