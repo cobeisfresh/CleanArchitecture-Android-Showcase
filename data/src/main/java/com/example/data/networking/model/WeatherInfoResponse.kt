@@ -1,13 +1,13 @@
 package com.example.data.networking.model
 
-import com.example.data.networking.base.NetworkResult
-import com.example.domain.model.WeatherInfo
+import com.example.data.database.model.WeatherEntity
+import com.example.data.networking.base.RoomMapper
 
 data class WeatherInfoResponse(val id: Int? = 0,
-                               val weather: List<Weather>?,
+                               val weather: ArrayList<Weather>?,
                                val main: MainInfo?,
-                               val name: String? = "") : NetworkResult<WeatherInfo>() {
-  override fun mapToDomainModel() = WeatherInfo(main?.temp ?: 0.0, main?.humidity ?: 0, main?.pressure ?: 0.0)
+                               val name: String? = "") : RoomMapper<WeatherEntity> {
+  override fun mapToRoomEntity() = WeatherEntity(id ?: 0, weather, main, name)
 }
 
 data class MainInfo(val temp: Double? = 0.0, val pressure: Double? = 0.0, val humidity: Int? = 0)
