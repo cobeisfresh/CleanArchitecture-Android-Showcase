@@ -6,14 +6,14 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
 
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Integer.parseInt(ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -28,10 +28,6 @@ android {
 
 }
 
-ext {
-    coroutinesVersion = "1.2.1"
-    koinVersion = "2.0.1"
-}
 
 dependencies {
 
