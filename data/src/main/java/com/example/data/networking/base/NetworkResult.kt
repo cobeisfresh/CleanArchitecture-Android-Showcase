@@ -1,7 +1,6 @@
 package com.example.data.networking.base
 
 import com.example.domain.model.HttpError
-import com.example.domain.model.Result
 import retrofit2.Response
 
 abstract class NetworkResult<out T : Any> : Mapper<T>
