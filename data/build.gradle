@@ -7,14 +7,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
 
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Integer.parseInt(ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -29,12 +29,6 @@ android {
 
 }
 
-ext {
-    retrofitVersion = "2.6.0"
-    okhttp3LogInterceptor = "3.10.0"
-    roomVersion = "2.1.0"
-    koinVersion = "2.0.1"
-}
 
 dependencies {
     implementation project(':domain')
