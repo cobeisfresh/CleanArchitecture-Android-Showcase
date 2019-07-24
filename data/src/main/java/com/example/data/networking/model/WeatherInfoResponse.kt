@@ -10,7 +10,12 @@ data class WeatherInfoResponse(val id: Int? = 0,
   override fun mapToRoomEntity() = WeatherEntity(id ?: 0, weather, main, name)
 }
 
-data class MainInfo(val temp: Double? = 0.0, val pressure: Double? = 0.0, val humidity: Int? = 0)
+data class MainInfo(val temp: Double? = 0.0,
+                    val pressure: Double? = 0.0,
+                    val humidity: Int? = 0)
 
-data class Weather(val id: Int? = 0, val main: String? = "", val description: String? = "", val icon: String? = "")
+data class Weather(val id: Int? = 0,
+                   val main: String? = "",
+                   val description: String? = "",
+                   val icon: String? = "")
 
