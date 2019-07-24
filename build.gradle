@@ -9,6 +9,7 @@ buildscript {
         roomVersion = ROOM_VERSION
         okhttp3LogInterceptor = OKHTTP3LOGINTERCEPTOR_VERSION
         architectureComponents = ARHITECTURECOMPONENTS_VERSION
+        mockitoVersion = MOCKITO_VERSION
     }
     repositories {
         google()

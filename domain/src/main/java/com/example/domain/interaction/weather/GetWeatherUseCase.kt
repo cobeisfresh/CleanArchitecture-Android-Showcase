@@ -5,5 +5,5 @@ import com.example.domain.model.WeatherInfo
 
 interface GetWeatherUseCase {
   
-  suspend fun execute(location: String): Result<WeatherInfo>
+  suspend operator fun invoke(location: String): Result<WeatherInfo>
 }

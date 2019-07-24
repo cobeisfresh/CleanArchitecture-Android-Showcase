@@ -4,5 +4,5 @@ import com.example.domain.repository.WeatherRepository
 
 class GetWeatherUseCaseImpl(private val weatherRepository: WeatherRepository) : GetWeatherUseCase {
   
-  override suspend fun execute(location: String) = weatherRepository.getWeatherForLocation(location)
+  override suspend operator fun invoke(location: String) = weatherRepository.getWeatherForLocation(location)
 }

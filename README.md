@@ -15,6 +15,8 @@ As you can see on the diagram above application's code is separated into 4 layer
  * **domain** module  
  * **data** module
 
+To wire it all up and to manage dependencies inside our codebase we are using Koin dependency injection framework. 
+
 #### App module
 We have left default name for this one. This module contains all of the code related to the UI/Presentation layer. This includes things like Activities, Fragments and ViewModels.  
 We'll use MVVM arhitectural pattern to separate our UI from the rest of the app. Presentation layer is built using Android Architecture Components: ViewModels, Lifecycle and LiveData elements.  
@@ -24,5 +26,7 @@ These components are also used throughout the rest of the application, thus help
 Domain module contains application's business logic. This is the core part of every app and it should be clear what project is all about just by looking at these files/classes. This module should also be independent of any framework. That's why it is the innermost layer in Uncle Bob's onion diagram. Following the dependency rule this module shouldn't depend on anything from **app** or **data** module. We will hold our Use Cases and business models in this module. We'll also store repository abstractions in this module. This allows us to communicate with the rest of the application following The Dependency Inversion Principle.
 
 #### Data module
-Data module holds all concrete implementations of our repositories and other data sources like databases or network, split into corresponding packages. Every data source holds its own model classes. Before sending data further into the domain layer we are going to map it into business models. This step will help us filter out data that is not valid or may not be used further in the app.
+Data module holds all concrete implementations of our repositories and other data sources like databases or network, split into corresponding packages. Every data source holds its own model classes.  Every model class that is going to be saved into the database or is going to be used in the domain layer should implement DomainMapper and RoomMapper and their respective methods in order to prepare data for the next layer. This step will help us filter out data that is not valid or may not be used further in the app.  
+To cache our data locally we are using Google's Room Persistance Library.  
+We are also using Retrofit for network requests and Gson for parsing json responses.
  
