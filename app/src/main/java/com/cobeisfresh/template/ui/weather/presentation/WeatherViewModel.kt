@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class WeatherViewModel(private val weatherUseCase: GetWeatherUseCase) : ViewModel() {
+class WeatherViewModel(private val getWeather: GetWeatherUseCase) : ViewModel() {
   
   // we make this private and provide only immutable live data to observers so they can't change anything
   private val _weatherLiveData = MutableLiveData<ViewState<WeatherInfo>>()
@@ -24,7 +24,7 @@ class WeatherViewModel(private val weatherUseCase: GetWeatherUseCase) : ViewMode
   fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) = viewModelScope.launch {
     _weatherLiveData.value = ViewState.loading()
     withContext(Dispatchers.IO) {
-      weatherUseCase.execute(location)
+      getWeather(location)
           .onSuccess { _weatherLiveData.postValue(ViewState.success(it)) }
           .onFailure { _weatherLiveData.postValue(ViewState.error(it.throwable)) }
     }

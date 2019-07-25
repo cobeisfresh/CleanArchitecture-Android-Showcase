@@ -7,13 +7,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
     defaultConfig {
         applicationId "com.cobeisfresh.template"
-        minSdkVersion 21 //todo extract version into properties file
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Integer.parseInt(ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,18 +24,13 @@ android {
     }
 }
 
-ext {
-    koinVersion = "2.0.1"
-    architectureComponents = "2.2.0-alpha02"
-    coroutinesVersion = "1.2.1"
-}
 
 dependencies {
     implementation project(":domain")
     implementation project(":data")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.annotation:annotation:1.1.0'
@@ -48,6 +43,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion"
 
     //di
     implementation "org.koin:koin-android:$koinVersion"
