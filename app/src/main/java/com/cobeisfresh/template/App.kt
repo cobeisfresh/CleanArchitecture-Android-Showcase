@@ -1,7 +1,9 @@
 package com.cobeisfresh.template
 
 import android.app.Application
+import com.cobeisfresh.template.di.appModule
 import com.cobeisfresh.template.di.presentationModule
+import com.example.data.di.databaseModule
 import com.example.data.di.networkingModule
 import com.example.data.di.repositoryModule
 import com.example.domain.di.interactionModule
@@ -24,6 +26,6 @@ class App : Application() {
   }
 }
 
-val appModules = listOf(presentationModule)
+val appModules = listOf(presentationModule, appModule)
 val domainModules = listOf(interactionModule)
-val dataModules = listOf(networkingModule, repositoryModule)
+val dataModules = listOf(networkingModule, repositoryModule, databaseModule)
