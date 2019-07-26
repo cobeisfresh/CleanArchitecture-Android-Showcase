@@ -1,7 +1,10 @@
 package com.cobeisfresh.template.common.extensions
 
 import android.view.View
+import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -24,4 +27,15 @@ fun View.gone() {
 
 inline fun View.onClick(crossinline onClick: () -> Unit) {
   setOnClickListener { onClick() }
+}
+
+fun FragmentActivity.showFragment(fragment: Fragment, @IdRes container: Int, addToBackStack: Boolean = false) {
+  supportFragmentManager.beginTransaction()
+      .apply {
+        if (addToBackStack) {
+          addToBackStack(fragment.tag)
+        }
+      }
+      .replace(container, fragment)
+      .commitAllowingStateLoss()
 }

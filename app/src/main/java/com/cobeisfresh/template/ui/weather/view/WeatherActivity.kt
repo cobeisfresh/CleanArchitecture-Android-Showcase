@@ -8,6 +8,7 @@ import com.cobeisfresh.template.R
 import com.cobeisfresh.template.common.convertKelvinToCelsius
 import com.cobeisfresh.template.common.extensions.onClick
 import com.cobeisfresh.template.common.extensions.subscribe
+import com.cobeisfresh.template.routing.AppNavigator
 import com.cobeisfresh.template.ui.weather.base.BaseActivity
 import com.cobeisfresh.template.ui.weather.base.ViewState
 import com.cobeisfresh.template.ui.weather.base.ViewState.Status.*
@@ -23,7 +24,7 @@ class WeatherActivity : BaseActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_weather)
-    
+    viewModel.initAppNavigator(appNavigator)
     viewModel.getWeatherForLocation()
     subscribeToData()
     
@@ -32,6 +33,8 @@ class WeatherActivity : BaseActivity() {
       imm.hideSoftInputFromWindow(weatherActivityContainer.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
       viewModel.getWeatherForLocation(cityInput.text.toString())
     }
+    
+    showWeatherDetails.onClick { viewModel.showWeatherDetails() }
   }
   
   private fun subscribeToData() = with(viewModel) {

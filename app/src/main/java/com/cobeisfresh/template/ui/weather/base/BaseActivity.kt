@@ -4,8 +4,10 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.cobeisfresh.template.common.EMPTY_STRING
 import com.cobeisfresh.template.common.extensions.gone
+import com.cobeisfresh.template.common.extensions.showFragment
 import com.cobeisfresh.template.common.extensions.snackbar
 import com.cobeisfresh.template.common.extensions.visible
 import com.cobeisfresh.template.routing.AppNavigator
@@ -23,4 +25,8 @@ abstract class BaseActivity : AppCompatActivity() {
   fun showLoading(progressBar: ProgressBar) = progressBar.visible()
   
   fun hideLoading(progressBar: ProgressBar) = progressBar.gone()
+  
+  fun addFragment(fragment: Fragment, containerId: Int, addToBackStack: Boolean = false) {
+    showFragment(fragment, containerId, addToBackStack)
+  }
 }
