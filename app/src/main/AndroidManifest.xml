@@ -15,14 +15,14 @@
     android:theme="@style/AppTheme"
     android:usesCleartextTraffic="true"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-    <activity android:name=".ui.weather.view.WeatherActivity">
+    <activity android:name=".ui.welcome.view.WelcomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".ui.weather.base.ContainerActivity" />
+    <activity android:name=".ui.weather.view.activities.WeatherActivity" />
 
   </application>
 

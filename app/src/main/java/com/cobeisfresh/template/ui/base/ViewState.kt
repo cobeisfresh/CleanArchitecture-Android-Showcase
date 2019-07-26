@@ -1,6 +1,6 @@
-package com.cobeisfresh.template.ui.weather.base
+package com.cobeisfresh.template.ui.base
 
-import com.cobeisfresh.template.ui.weather.base.ViewState.Status.*
+import com.cobeisfresh.template.ui.base.ViewState.Status.*
 
 data class ViewState<T>(val status: Status, val data: T?, val error: Throwable?) {
   

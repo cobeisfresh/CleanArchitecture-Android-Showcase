@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cobeisfresh.template.common.DEFAULT_CITY_NAME
 import com.cobeisfresh.template.routing.AppNavigator
-import com.cobeisfresh.template.ui.weather.base.NavigatorViewModel
-import com.cobeisfresh.template.ui.weather.base.ViewState
+import com.cobeisfresh.template.ui.base.NavigatorViewModel
+import com.cobeisfresh.template.ui.base.ViewState
 import com.example.domain.interaction.weather.GetWeatherUseCase
 import com.example.domain.model.WeatherInfo
 import com.example.domain.model.onFailure
@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class WeatherViewModel(private val getWeather: GetWeatherUseCase) : NavigatorViewModel() {
+class WeatherViewModel(private val getWeather: GetWeatherUseCase) : ViewModel() {
   
   // we make this private and provide only immutable live data to observers so they can't change anything
   private val _weatherLiveData = MutableLiveData<ViewState<WeatherInfo>>()
@@ -30,13 +30,5 @@ class WeatherViewModel(private val getWeather: GetWeatherUseCase) : NavigatorVie
           .onSuccess { _weatherLiveData.postValue(ViewState.success(it)) }
           .onFailure { _weatherLiveData.postValue(ViewState.error(it.throwable)) }
     }
-  }
-  
-  fun showWeatherDetails() {
-    appNavigator.showWeatherDetails()
-  }
-  
-  override fun initAppNavigator(appNavigator: AppNavigator) {
-    this.appNavigator = appNavigator
   }
 }

@@ -5,7 +5,7 @@
   android:id="@+id/weatherActivityContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.weather.view.WeatherActivity">
+  tools:context=".ui.weather.view.activities.WeatherActivity">
 
   <ProgressBar
     android:id="@+id/weatherLoadingProgress"

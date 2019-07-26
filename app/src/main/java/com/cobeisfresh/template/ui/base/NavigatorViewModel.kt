@@ -1,4 +1,4 @@
-package com.cobeisfresh.template.ui.weather.base
+package com.cobeisfresh.template.ui.base
 
 import androidx.lifecycle.ViewModel
 import com.cobeisfresh.template.routing.AppNavigator

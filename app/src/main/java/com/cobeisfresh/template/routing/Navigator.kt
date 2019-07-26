@@ -4,5 +4,4 @@ interface Navigator {
   
   fun showWeather()
   
-  fun showWeatherDetails()
 }
