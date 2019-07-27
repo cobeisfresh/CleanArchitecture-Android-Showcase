@@ -3,7 +3,6 @@ package com.cobeisfresh.template.ui.weather.view
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
-import androidx.lifecycle.Observer
 import com.cobeisfresh.template.R
 import com.cobeisfresh.template.common.convertKelvinToCelsius
 import com.cobeisfresh.template.common.extensions.onClick
@@ -14,10 +13,9 @@ import com.cobeisfresh.template.ui.weather.base.ViewState.Status.*
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
 import com.example.domain.model.WeatherInfo
 import kotlinx.android.synthetic.main.activity_weather.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeatherActivity : BaseActivity() {
-  
   private val viewModel: WeatherViewModel by viewModel()
   
   override fun onCreate(savedInstanceState: Bundle?) {
