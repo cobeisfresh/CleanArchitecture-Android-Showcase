@@ -1,6 +1,7 @@
 package com.cobeisfresh.template.di
 
 import androidx.appcompat.app.AppCompatActivity
+import com.cobeisfresh.template.routing.AppFragmentNavigator
 import com.cobeisfresh.template.common.coroutine.CoroutineContextProvider
 import com.cobeisfresh.template.routing.AppNavigator
 import org.koin.dsl.module
@@ -8,4 +9,5 @@ import org.koin.dsl.module
 val appModule = module {
   single { CoroutineContextProvider() }
   single { (activity: AppCompatActivity) -> AppNavigator(activity) }
+  single { AppFragmentNavigator() }
 }
