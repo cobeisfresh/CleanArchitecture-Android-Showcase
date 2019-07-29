@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cobeisfresh.template.common.DEFAULT_CITY_NAME
 import com.cobeisfresh.template.common.coroutine.CoroutineContextProvider
-import com.cobeisfresh.template.ui.weather.base.ViewState
+import com.cobeisfresh.template.ui.base.ViewState
 import com.example.domain.interaction.weather.GetWeatherUseCase
 import com.example.domain.model.WeatherInfo
 import com.example.domain.model.onFailure
 import com.example.domain.model.onSuccess
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import org.koin.core.KoinComponent
 
 class WeatherViewModel(private val getWeather: GetWeatherUseCase,
                        private val coroutineContextProvider: CoroutineContextProvider) : ViewModel(), KoinComponent {
