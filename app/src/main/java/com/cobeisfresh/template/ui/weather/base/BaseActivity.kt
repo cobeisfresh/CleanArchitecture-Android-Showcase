@@ -8,8 +8,13 @@ import com.cobeisfresh.template.common.EMPTY_STRING
 import com.cobeisfresh.template.common.extensions.gone
 import com.cobeisfresh.template.common.extensions.snackbar
 import com.cobeisfresh.template.common.extensions.visible
+import com.cobeisfresh.template.routing.AppNavigator
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 abstract class BaseActivity : AppCompatActivity() {
+  
+  protected val appNavigator: AppNavigator by inject { parametersOf(this) }
   
   fun showError(@StringRes errorMessage: Int, rootView: View) = snackbar(errorMessage, rootView)
   
