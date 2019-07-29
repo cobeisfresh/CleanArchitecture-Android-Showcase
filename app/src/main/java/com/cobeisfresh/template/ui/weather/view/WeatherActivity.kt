@@ -24,6 +24,7 @@ class WeatherActivity : BaseActivity() {
     
     viewModel.getWeatherForLocation()
     subscribeToData()
+    
     getWeather.onClick {
       val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
       imm.hideSoftInputFromWindow(weatherActivityContainer.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
