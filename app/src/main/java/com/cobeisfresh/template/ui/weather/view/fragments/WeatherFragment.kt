@@ -7,18 +7,23 @@ import com.cobeisfresh.template.common.extensions.onClick
 import com.cobeisfresh.template.common.extensions.subscribe
 import com.cobeisfresh.template.ui.base.BaseFragment
 import com.cobeisfresh.template.ui.base.ViewState
+import com.cobeisfresh.template.ui.base.ViewState.Status
+import com.cobeisfresh.template.ui.base.ViewState.Status.*
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
 import com.example.domain.model.WeatherInfo
 import kotlinx.android.synthetic.main.fragment_weather.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeatherFragment : BaseFragment() {
   
   private val viewModel: WeatherViewModel by viewModel()
   
+  override fun getLayout() = R.layout.fragment_weather
+  
   override fun viewReady() {
     viewModel.getWeatherForLocation()
     subscribeToData()
+    
     getWeather.onClick {
       weatherActivityContainer.hideKeyboard()
       viewModel.getWeatherForLocation(cityInput.text.toString())
@@ -27,8 +32,6 @@ class WeatherFragment : BaseFragment() {
     showWeatherDetails.onClick { activity?.run { appFragmentNavigator.showWeatherDetails(this) } }
   }
   
-  override fun getLayout() = R.layout.fragment_weather
-  
   private fun subscribeToData() {
     viewModel.weatherLiveData.subscribe(this, ::handleViewState)
   }
@@ -36,9 +39,9 @@ class WeatherFragment : BaseFragment() {
   private fun handleViewState(viewState: ViewState<WeatherInfo>) {
     with(viewState) {
       when (status) {
-        ViewState.Status.LOADING -> showLoading(weatherLoadingProgress)
-        ViewState.Status.SUCCESS -> data?.run(::showWeatherData)
-        ViewState.Status.ERROR -> {
+        LOADING -> showLoading(weatherLoadingProgress)
+        SUCCESS -> data?.run(::showWeatherData)
+        ERROR -> {
           hideLoading(weatherLoadingProgress)
           showError(error?.message, weatherActivityContainer)
         }

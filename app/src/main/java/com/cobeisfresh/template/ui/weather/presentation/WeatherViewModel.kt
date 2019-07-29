@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cobeisfresh.template.common.DEFAULT_CITY_NAME
-import com.cobeisfresh.template.routing.AppNavigator
-import com.cobeisfresh.template.ui.base.NavigatorViewModel
 import com.cobeisfresh.template.ui.base.ViewState
 import com.example.domain.interaction.weather.GetWeatherUseCase
 import com.example.domain.model.WeatherInfo
