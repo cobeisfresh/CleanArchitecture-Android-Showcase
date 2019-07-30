@@ -37,16 +37,15 @@ inline fun View.onClick(crossinline onClick: () -> Unit) {
 }
 
 fun FragmentActivity.showFragment(fragment: Fragment, @IdRes container: Int, addToBackStack: Boolean = false) {
-  supportFragmentManager.beginTransaction()
-      .apply {
-        if (addToBackStack) {
-          addToBackStack(fragment.tag)
-        }
-      }
+  supportFragmentManager.beginTransaction().apply {
+    if (addToBackStack) {
+      addToBackStack(fragment.tag)
+    }
+  }
       .replace(container, fragment)
       .commitAllowingStateLoss()
 }
 
-fun FragmentActivity.goBack(){
+fun FragmentActivity.goBack() {
   supportFragmentManager.popBackStack()
 }

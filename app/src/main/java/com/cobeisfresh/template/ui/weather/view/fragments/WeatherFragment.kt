@@ -7,7 +7,6 @@ import com.cobeisfresh.template.common.extensions.onClick
 import com.cobeisfresh.template.common.extensions.subscribe
 import com.cobeisfresh.template.ui.base.BaseFragment
 import com.cobeisfresh.template.ui.base.ViewState
-import com.cobeisfresh.template.ui.base.ViewState.Status
 import com.cobeisfresh.template.ui.base.ViewState.Status.*
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
 import com.example.domain.model.WeatherInfo

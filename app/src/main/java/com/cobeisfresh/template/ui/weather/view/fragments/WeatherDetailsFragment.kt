@@ -5,9 +5,9 @@ import com.cobeisfresh.template.ui.base.BaseFragment
 
 class WeatherDetailsFragment : BaseFragment() {
   
-  override fun viewReady() {}
-  
   override fun getLayout() = R.layout.fragment_weather_details
+  
+  override fun viewReady() {}
   
   companion object {
     fun newInstance() = WeatherDetailsFragment()

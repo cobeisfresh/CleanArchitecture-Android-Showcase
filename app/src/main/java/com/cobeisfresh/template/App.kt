@@ -14,12 +14,14 @@ import org.koin.core.logger.Level
 
 class App : Application() {
   
-  lateinit var INSTANCE: Application
-    private set
+  companion object {
+    lateinit var instance: Application
+      private set
+  }
   
   override fun onCreate() {
     super.onCreate()
-    INSTANCE = this
+    instance = this
     
     startKoin {
       androidContext(this@App)
