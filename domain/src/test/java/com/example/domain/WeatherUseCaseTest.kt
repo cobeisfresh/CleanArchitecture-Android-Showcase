@@ -11,7 +11,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
 class WeatherUseCaseTest {
   
   private val weatherRepository: WeatherRepository = mock()
