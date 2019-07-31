@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 
 class WeatherViewModel(private val getWeather: GetWeatherUseCase,
-                       private val coroutineContextProvider: CoroutineContextProvider) : ViewModel(), KoinComponent {
+                       private val coroutineContextProvider: CoroutineContextProvider) : ViewModel() {
   
   // we make this private and provide only immutable live data to observers so they can't change anything
   private val _weatherLiveData = MutableLiveData<ViewState<WeatherInfo>>()
