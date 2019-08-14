@@ -23,6 +23,7 @@ class WeatherRepositoryTest {
       whenever(weatherTestApi.getWeatherForLocation(OSIJEK_CITY_NAME)).thenReturn(Response.success(successWeatherInfoResponse))
       whenever(weatherDao.updateWeatherAndReturn(successWeatherInfoResponse.mapToRoomEntity())).thenReturn(fakeWeatherEntity)
       weatherRepository.getWeatherForLocation(OSIJEK_CITY_NAME)
+      
       verify(weatherTestApi, times(1)).getWeatherForLocation(OSIJEK_CITY_NAME)
       verify(weatherDao, times(1)).updateWeatherAndReturn(fakeWeatherEntity)
     }
@@ -35,6 +36,7 @@ class WeatherRepositoryTest {
       whenever(weatherTestApi.getWeatherForLocation(OSIJEK_CITY_NAME))
           .thenReturn(Response.error(FAKE_FAILURE_ERROR_CODE, failureResponseBody))
       weatherRepository.getWeatherForLocation(OSIJEK_CITY_NAME)
+      
       verify(weatherTestApi, times(1)).getWeatherForLocation(OSIJEK_CITY_NAME)
       verify(weatherDao, never()).updateWeatherAndReturn(fakeWeatherEntity)
     }

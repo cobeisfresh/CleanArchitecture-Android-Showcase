@@ -2,7 +2,7 @@ package com.cobeisfresh
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.cobeisfresh.template.common.coroutine.TestCoroutineContextProvider
-import com.cobeisfresh.template.ui.weather.base.ViewState
+import com.cobeisfresh.template.ui.base.ViewState
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
 import com.example.domain.interaction.weather.GetWeatherUseCase
 import com.example.domain.model.Success
