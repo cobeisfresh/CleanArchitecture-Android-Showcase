@@ -3,10 +3,7 @@ package com.example.data.networking.base
 import com.example.domain.model.HttpError
 import retrofit2.Response
 
-abstract class NetworkResult<out T : Any> : DomainMapper<T>
-
 interface DomainMapper<out T : Any> {
-  
   fun mapToDomainModel(): T
 }
 
