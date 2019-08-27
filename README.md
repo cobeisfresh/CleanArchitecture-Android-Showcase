@@ -50,7 +50,7 @@ We are also using Retrofit for network requests and Gson for parsing json respon
 - [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 
 ## License: MIT 
-Created by [COBE](https://www.cobe.tech/) Copyright 2018 COBE
+Created by [COBE](https://www.cobe.tech/) Copyright 2019 COBE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
