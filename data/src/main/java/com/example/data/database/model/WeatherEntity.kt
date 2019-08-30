@@ -11,7 +11,7 @@ import com.example.domain.model.WeatherInfo
 
 @Entity(tableName = WEATHER_TABLE_NAME)
 data class WeatherEntity(@PrimaryKey val id: Int? = 0,
-                         val weather: ArrayList<Weather>?,
+                         val weather: List<Weather>?,
                          @Embedded
                          val main: MainInfo?,
                          val name: String? = "") : DomainMapper<WeatherInfo> {

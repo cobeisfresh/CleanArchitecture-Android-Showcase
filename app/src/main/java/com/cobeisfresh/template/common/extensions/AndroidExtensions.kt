@@ -7,10 +7,13 @@ import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
+import com.cobeisfresh.template.common.coroutine.CoroutineContextProvider
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 inline fun <T> LiveData<T>.subscribe(owner: LifecycleOwner, crossinline onDataReceived: (T) -> Unit) =
     observe(owner, Observer { onDataReceived(it) })
@@ -48,4 +51,10 @@ fun FragmentActivity.showFragment(fragment: Fragment, @IdRes container: Int, add
 
 fun FragmentActivity.goBack() {
   supportFragmentManager.popBackStack()
+}
+
+inline fun ViewModel.launch(
+    coroutineContext: CoroutineContext = CoroutineContextProvider().io,
+    crossinline block: suspend CoroutineScope.() -> Unit): Job {
+  return viewModelScope.launch(coroutineContext) { block() }
 }

@@ -4,10 +4,10 @@ import com.example.data.database.model.WeatherEntity
 import com.example.data.networking.base.RoomMapper
 
 data class WeatherInfoResponse(val id: Int? = 0,
-                               val weather: ArrayList<Weather>?,
+                               val weather: List<Weather>?,
                                val main: MainInfo?,
                                val name: String? = "") : RoomMapper<WeatherEntity> {
-  override fun mapToRoomEntity() = WeatherEntity(id ?: 0, weather ?: arrayListOf(), main ?: MainInfo(), name)
+  override fun mapToRoomEntity() = WeatherEntity(id ?: 0, weather ?: emptyList(), main ?: MainInfo(), name)
 }
 
 data class MainInfo(val temp: Double? = 0.0,
