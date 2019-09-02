@@ -5,9 +5,7 @@ import com.cobeisfresh.template.common.convertKelvinToCelsius
 import com.cobeisfresh.template.common.extensions.hideKeyboard
 import com.cobeisfresh.template.common.extensions.onClick
 import com.cobeisfresh.template.common.extensions.subscribe
-import com.cobeisfresh.template.ui.base.BaseFragment
-import com.cobeisfresh.template.ui.base.ViewState
-import com.cobeisfresh.template.ui.base.ViewState.Status.*
+import com.cobeisfresh.template.ui.base.*
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
 import com.example.domain.model.WeatherInfo
 import kotlinx.android.synthetic.main.fragment_weather.*
@@ -36,14 +34,12 @@ class WeatherFragment : BaseFragment() {
   }
   
   private fun handleViewState(viewState: ViewState<WeatherInfo>) {
-    with(viewState) {
-      when (status) {
-        LOADING -> showLoading(weatherLoadingProgress)
-        SUCCESS -> data?.run(::showWeatherData)
-        ERROR -> {
-          hideLoading(weatherLoadingProgress)
-          showError(error?.message, weatherActivityContainer)
-        }
+    when (viewState) {
+      is Loading -> showLoading(weatherLoadingProgress)
+      is Success -> showWeatherData(viewState.data)
+      is Error -> {
+        hideLoading(weatherLoadingProgress)
+        showError(viewState.error.message, weatherActivityContainer)
       }
     }
   }

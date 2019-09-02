@@ -1,25 +1,8 @@
 package com.cobeisfresh.template.ui.base
 
-import com.cobeisfresh.template.ui.base.ViewState.Status.*
+sealed class ViewState<out T : Any>
+class Success<out T : Any>(val data: T) : ViewState<T>()
+class Error<out T : Any>(val error: Throwable) : ViewState<T>()
+class Loading<out T : Any> : ViewState<T>()
 
-data class ViewState<T>(val status: Status, val data: T?, val error: Throwable?) {
-  
-  enum class Status {
-    SUCCESS, ERROR, LOADING
-  }
-  
-  companion object {
-    fun <T> success(data: T): ViewState<T> {
-      return ViewState(SUCCESS, data, null)
-    }
-    
-    fun <T> error(error: Throwable): ViewState<T> {
-      return ViewState(ERROR, null, error)
-    }
-    
-    fun <T> loading(): ViewState<T> {
-      return ViewState(LOADING, null, null)
-    }
-  }
-}
 

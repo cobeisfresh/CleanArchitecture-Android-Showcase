@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cobeisfresh.template.common.DEFAULT_CITY_NAME
 import com.cobeisfresh.template.common.extensions.launch
+import com.cobeisfresh.template.ui.base.Error
+import com.cobeisfresh.template.ui.base.Loading
+import com.cobeisfresh.template.ui.base.Success
 import com.cobeisfresh.template.ui.base.ViewState
 import com.example.domain.interaction.weather.GetWeatherUseCase
 import com.example.domain.model.WeatherInfo
@@ -20,9 +23,9 @@ class WeatherViewModel(private val getWeather: GetWeatherUseCase) : ViewModel() 
   
   fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) =
       launch {
-        _weatherLiveData.value = ViewState.loading()
+        _weatherLiveData.value = Loading()
         getWeather(location)
-            .onSuccess { _weatherLiveData.postValue(ViewState.success(it)) }
-            .onFailure { _weatherLiveData.postValue(ViewState.error(it.throwable)) }
+            .onSuccess { _weatherLiveData.postValue(Success(it)) }
+            .onFailure { _weatherLiveData.postValue(Error(it.throwable)) }
       }
 }
