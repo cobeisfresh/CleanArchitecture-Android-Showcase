@@ -4,7 +4,6 @@ import androidx.room.TypeConverter
 import com.example.data.networking.model.MainInfo
 import com.example.data.networking.model.Weather
 import com.google.gson.Gson
-import java.util.ArrayList
 import com.google.gson.reflect.TypeToken
 
 class Converters {
@@ -13,13 +12,13 @@ class Converters {
   // Weather list converters
   
   @TypeConverter
-  fun fromListToJson(list: ArrayList<Weather>?): String {
+  fun fromWeatherListToJson(list: List<Weather>?): String {
     return list?.let { gson.toJson(it) } ?: ""
   }
   
   @TypeConverter
-  fun fromJsonToList(jsonList: String): ArrayList<Weather> {
-    val listType = object : TypeToken<ArrayList<Weather>>() {}.type
+  fun fromJsonToWeatherList(jsonList: String): List<Weather> {
+    val listType = object : TypeToken<List<Weather>>() {}.type
     return gson.fromJson(jsonList, listType)
   }
   

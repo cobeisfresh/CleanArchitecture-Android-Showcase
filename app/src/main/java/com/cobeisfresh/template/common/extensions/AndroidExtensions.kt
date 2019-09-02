@@ -54,7 +54,7 @@ fun FragmentActivity.goBack() {
 }
 
 inline fun ViewModel.launch(
-    coroutineContext: CoroutineContext = CoroutineContextProvider().io,
+    coroutineContext: CoroutineContext = CoroutineContextProvider().main,
     crossinline block: suspend CoroutineScope.() -> Unit): Job {
   return viewModelScope.launch(coroutineContext) { block() }
 }
