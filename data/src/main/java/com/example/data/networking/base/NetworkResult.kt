@@ -9,7 +9,7 @@ import com.example.domain.model.Success
 import retrofit2.Response
 import java.io.IOException
 
-interface DomainMapper<out T : Any> {
+interface DomainMapper<T : Any> {
   fun mapToDomainModel(): T
 }
 
@@ -26,9 +26,10 @@ inline fun <T : Any> Response<T>.onFailure(action: (HttpError) -> Unit) {
   if (!isSuccessful) errorBody()?.run { action(HttpError(Throwable(message()), code())) }
 }
 
+// use this if you need to cache data, or retrieve something from cache
 inline fun <T : RoomMapper<R>, R : DomainMapper<U>, U : Any> Response<T>.getData(
     cacheAction: (R) -> Unit,
-    fetchFromCacheAction: () -> R?): Result<U> {
+    fetchFromCacheAction: () -> R): Result<U> {
   try {
     onSuccess {
       val databaseEntity = it.mapToRoomEntity()
@@ -45,6 +46,7 @@ inline fun <T : RoomMapper<R>, R : DomainMapper<U>, U : Any> Response<T>.getData
   }
 }
 
+//use this for communicating only with api service
 fun <T : DomainMapper<R>, R : Any> Response<T>.getData(): Result<R> {
   try {
     onSuccess { return Success(it.mapToDomainModel()) }

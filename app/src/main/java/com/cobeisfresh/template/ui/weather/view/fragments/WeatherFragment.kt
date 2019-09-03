@@ -27,7 +27,7 @@ class WeatherFragment : BaseFragment() {
       viewModel.getWeatherForLocation(cityInput.text.toString())
     }
     
-    showWeatherDetails.onClick { activity?.run { appFragmentNavigator.showWeatherDetails() } }
+    showWeatherDetails.onClick { appFragmentNavigator.showWeatherDetails() }
   }
   
   private fun subscribeToData() {

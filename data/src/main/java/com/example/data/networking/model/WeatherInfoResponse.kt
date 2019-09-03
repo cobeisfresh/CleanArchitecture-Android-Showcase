@@ -8,8 +8,6 @@ data class WeatherInfoResponse(val id: Int? = 0,
                                val main: MainInfo?,
                                val name: String? = "") : RoomMapper<WeatherEntity> {
 
-//  override fun mapToDomainModel() = WeatherInfo(main?.temp ?: 0.0, main?.humidity ?: 0, main?.pressure ?: 0.0)
-  
   override fun mapToRoomEntity() = WeatherEntity(id, weather ?: arrayListOf(), main ?: MainInfo(), name ?: "")
 }
 

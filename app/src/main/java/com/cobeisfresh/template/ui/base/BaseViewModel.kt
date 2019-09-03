@@ -31,4 +31,8 @@ abstract class BaseViewModel<T : Any, E> : ViewModel(), KoinComponent {
       noInternetAction()
     }
   }
+  
+  protected fun executeUseCase(action: suspend () -> Unit) {
+    launch { action() }
+  }
 }
