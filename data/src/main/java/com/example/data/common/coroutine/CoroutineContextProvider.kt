@@ -1,4 +1,4 @@
-package com.cobeisfresh.template.common.coroutine
+package com.example.data.common.coroutine
 
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext

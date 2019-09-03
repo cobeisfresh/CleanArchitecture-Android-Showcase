@@ -1,4 +1,4 @@
-package com.example.data.utils
+package com.example.data.common.utils
 
 interface Connectivity {
   

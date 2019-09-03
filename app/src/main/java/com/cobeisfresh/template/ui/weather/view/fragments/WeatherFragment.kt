@@ -30,7 +30,7 @@ class WeatherFragment : BaseFragment() {
   }
   
   private fun subscribeToData() {
-    viewModel.weatherLiveData.subscribe(this, ::handleViewState)
+    viewModel.viewState.subscribe(this, ::handleViewState)
   }
   
   private fun handleViewState(viewState: ViewState<WeatherInfo>) {
@@ -41,7 +41,12 @@ class WeatherFragment : BaseFragment() {
         hideLoading(weatherLoadingProgress)
         showError(viewState.error.message, weatherActivityContainer)
       }
+      is NoInternetState -> showNoInternetError()
     }
+  }
+  
+  private fun showNoInternetError() {
+    hideLoading(weatherLoadingProgress)
   }
   
   private fun showWeatherData(weatherInfo: WeatherInfo) {
