@@ -7,18 +7,13 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import com.cobeisfresh.template.common.EMPTY_STRING
-import com.cobeisfresh.template.common.extensions.gone
-import com.cobeisfresh.template.common.extensions.snackbar
-import com.cobeisfresh.template.common.extensions.visible
 import com.cobeisfresh.template.routing.AppFragmentNavigator
-import com.cobeisfresh.template.routing.AppNavigator
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 abstract class BaseFragment : Fragment() {
   
-  protected val appFragmentNavigator: AppFragmentNavigator by inject()
+  protected val appFragmentNavigator: AppFragmentNavigator by inject { parametersOf(activity) }
   
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(getLayout(), container, false)
@@ -34,7 +29,6 @@ abstract class BaseFragment : Fragment() {
   abstract fun viewReady()
   
   abstract fun getLayout(): Int
-  
   
   open fun showError(@StringRes errorMessage: Int, rootView: View) {
     (activity as BaseActivity).showError(errorMessage, rootView)

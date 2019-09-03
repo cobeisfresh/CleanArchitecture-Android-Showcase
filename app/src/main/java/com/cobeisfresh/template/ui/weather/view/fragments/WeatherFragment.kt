@@ -4,6 +4,7 @@ import com.cobeisfresh.template.R
 import com.cobeisfresh.template.common.convertKelvinToCelsius
 import com.cobeisfresh.template.common.extensions.hideKeyboard
 import com.cobeisfresh.template.common.extensions.onClick
+import com.cobeisfresh.template.common.extensions.snackbar
 import com.cobeisfresh.template.common.extensions.subscribe
 import com.cobeisfresh.template.ui.base.*
 import com.cobeisfresh.template.ui.weather.presentation.WeatherViewModel
@@ -22,11 +23,11 @@ class WeatherFragment : BaseFragment() {
     subscribeToData()
     
     getWeather.onClick {
-      weatherActivityContainer.hideKeyboard()
+      weatherFragmentContainer.hideKeyboard()
       viewModel.getWeatherForLocation(cityInput.text.toString())
     }
     
-    showWeatherDetails.onClick { activity?.run { appFragmentNavigator.showWeatherDetails(this) } }
+    showWeatherDetails.onClick { activity?.run { appFragmentNavigator.showWeatherDetails() } }
   }
   
   private fun subscribeToData() {
@@ -37,16 +38,19 @@ class WeatherFragment : BaseFragment() {
     when (viewState) {
       is Loading -> showLoading(weatherLoadingProgress)
       is Success -> showWeatherData(viewState.data)
-      is Error -> {
-        hideLoading(weatherLoadingProgress)
-        showError(viewState.error.message, weatherActivityContainer)
-      }
+      is Error -> handleError(viewState.error.localizedMessage)
       is NoInternetState -> showNoInternetError()
     }
   }
   
+  private fun handleError(error: String) {
+    hideLoading(weatherLoadingProgress)
+    showError(error, weatherFragmentContainer)
+  }
+  
   private fun showNoInternetError() {
     hideLoading(weatherLoadingProgress)
+    snackbar("No Internet connection available. Please try again", weatherFragmentContainer)
   }
   
   private fun showWeatherData(weatherInfo: WeatherInfo) {

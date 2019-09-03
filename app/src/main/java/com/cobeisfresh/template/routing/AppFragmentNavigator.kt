@@ -9,9 +9,8 @@ import com.cobeisfresh.template.ui.weather.view.fragments.WeatherDetailsFragment
  * Every activity that holds fragments should name its container "fragmentContainer"
  */
 
-class AppFragmentNavigator : FragmentNavigator {
+class AppFragmentNavigator(private val activity: FragmentActivity) : FragmentNavigator {
   
-  override fun showWeatherDetails(fragmentActivity: FragmentActivity) =
-      fragmentActivity.showFragment(WeatherDetailsFragment.newInstance(), R.id.fragmentContainer, true)
+  override fun showWeatherDetails() = activity.showFragment(WeatherDetailsFragment.newInstance(), R.id.fragmentContainer, true)
 }
 
