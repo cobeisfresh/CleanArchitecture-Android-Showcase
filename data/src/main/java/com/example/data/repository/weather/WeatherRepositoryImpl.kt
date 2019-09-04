@@ -17,6 +17,7 @@ class WeatherRepositoryImpl(private val weatherApi: WeatherApi,
           fetchFromCacheAction = { weatherDao.getWeatherInfoForCity(location) },
           cacheAction = { weatherDao.saveWeatherInfo(it) })
       },
-      dbDataProvider = { weatherDao.getWeatherInfoForCity(location) })
+      dbDataProvider = { weatherDao.getWeatherInfoForCity(location) }
+    )
   }
 }

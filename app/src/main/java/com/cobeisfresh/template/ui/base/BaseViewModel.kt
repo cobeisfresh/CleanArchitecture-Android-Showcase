@@ -25,6 +25,7 @@ abstract class BaseViewModel<T : Any, E> : ViewModel(), KoinComponent {
     get() = _viewEffects
   
   protected fun executeUseCase(action: suspend () -> Unit, noInternetAction: () -> Unit) {
+    _viewState.value = Loading()
     if (connectivity.hasNetworkAccess()) {
       launch { action() }
     } else {
@@ -33,6 +34,7 @@ abstract class BaseViewModel<T : Any, E> : ViewModel(), KoinComponent {
   }
   
   protected fun executeUseCase(action: suspend () -> Unit) {
+    _viewState.value = Loading()
     launch { action() }
   }
 }

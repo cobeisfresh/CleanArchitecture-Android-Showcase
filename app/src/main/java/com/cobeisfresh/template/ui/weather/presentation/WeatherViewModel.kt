@@ -13,12 +13,9 @@ import com.example.domain.model.onSuccess
 
 class WeatherViewModel(private val getWeather: GetWeatherUseCase) : BaseViewModel<WeatherInfo, WeatherViewEffects>() {
   
-  fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) {
-    executeUseCase {
-      _viewState.value = Loading()
-      getWeather(location)
-          .onSuccess { _viewState.value = Success(it) }
-          .onFailure { _viewState.value = Error(it.throwable) }
-    }
-  }
+  fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) = executeUseCase {
+        getWeather(location)
+            .onSuccess { _viewState.value = Success(it) }
+            .onFailure { _viewState.value = Error(it.throwable) }
+      }
 }
