@@ -14,7 +14,7 @@ class WeatherRepositoryImpl(private val weatherApi: WeatherApi,
     return fetchData(
       apiDataProvider = {
         weatherApi.getWeatherForLocation(location).getData(
-          fetchFromCacheAction = { weatherDao.getWeatherInfoForCity(location) }, //FIXME: data not caching
+          fetchFromCacheAction = { weatherDao.getWeatherInfoForCity(location) },
           cacheAction = { weatherDao.saveWeatherInfo(it) })
       },
       dbDataProvider = { weatherDao.getWeatherInfoForCity(location) })

@@ -26,7 +26,10 @@ inline fun <T : Any> Response<T>.onFailure(action: (HttpError) -> Unit) {
   if (!isSuccessful) errorBody()?.run { action(HttpError(Throwable(message()), code())) }
 }
 
-// use this if you need to cache data, or retrieve something from cache
+/**
+ * Use this if you need to cache data after fetching it from the api, or retrieve something from cache
+ */
+
 inline fun <T : RoomMapper<R>, R : DomainMapper<U>, U : Any> Response<T>.getData(
     cacheAction: (R) -> Unit,
     fetchFromCacheAction: () -> R): Result<U> {
@@ -46,7 +49,9 @@ inline fun <T : RoomMapper<R>, R : DomainMapper<U>, U : Any> Response<T>.getData
   }
 }
 
-//use this for communicating only with api service
+/**
+ * Use this when communicating only with the api service
+ */
 fun <T : DomainMapper<R>, R : Any> Response<T>.getData(): Result<R> {
   try {
     onSuccess { return Success(it.mapToDomainModel()) }
