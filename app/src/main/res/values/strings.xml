@@ -10,4 +10,5 @@
   <string name="invalid_password">Password must be >5 characters</string>
   <string name="login_failed">"Login failed"</string>
   <string name="check_wheather">Check Wheather</string>
+  <string name="no_internet_error_message">No Internet connection available. Please try again</string>
 </resources>

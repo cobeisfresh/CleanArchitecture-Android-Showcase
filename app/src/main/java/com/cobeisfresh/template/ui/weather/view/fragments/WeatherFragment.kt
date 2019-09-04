@@ -19,7 +19,7 @@ class WeatherFragment : BaseFragment() {
   override fun getLayout() = R.layout.fragment_weather
   
   override fun viewReady() {
-    viewModel.getWeatherForLocation()
+//    viewModel.getWeatherForLocation()
     subscribeToData()
     
     getWeather.onClick {
@@ -50,7 +50,7 @@ class WeatherFragment : BaseFragment() {
   
   private fun showNoInternetError() {
     hideLoading(weatherLoadingProgress)
-    snackbar("No Internet connection available. Please try again", weatherFragmentContainer)
+    snackbar(getString(R.string.no_internet_error_message), weatherFragmentContainer)
   }
   
   private fun showWeatherData(weatherInfo: WeatherInfo) {
