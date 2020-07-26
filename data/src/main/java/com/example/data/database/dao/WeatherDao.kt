@@ -18,4 +18,16 @@ interface WeatherDao {
   
   @Query("SELECT * FROM $WEATHER_TABLE_NAME WHERE name = :city LIMIT 1")
   suspend fun getWeatherInfoForCity(city: String): WeatherEntity
+
+  /**
+   *NOTICE: This is a dummy method used as an example for handling Lists of data
+   */
+  @Query("SELECT * FROM $WEATHER_TABLE_NAME WHERE name = :city")
+  suspend fun getWeatherInfoList(city: String): List<WeatherEntity>
+
+  /**
+   *NOTICE: This is a dummy method used as an example for handling Lists of data
+   */
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun saveWeatherInfo(weatherList: List<WeatherEntity>)
 }
